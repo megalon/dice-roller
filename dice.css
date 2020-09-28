@@ -25,6 +25,7 @@
 }
 
 #label {
+    display:none;
     font-size: 45pt;
     word-spacing: 0.5em;
     padding: 5px 15px;
