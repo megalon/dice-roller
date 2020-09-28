@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  web:
+    image: megalon/dice-roller
+    build: .
+    ports:
+      - "8889:80"
+    restart: always
