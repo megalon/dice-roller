@@ -66,6 +66,18 @@ function dice_initialize(container) {
             $t.dice.dice_color = '#593304';
             $t.dice.label_color = '#aaaaaa';
             break;
+        case 'shul':
+            $t.dice.dice_color = '#391C4D';
+            $t.dice.label_color = '#AA6D3B';
+            break;
+        case 'meg':
+            $t.dice.dice_color = '#3a96cb';
+            $t.dice.label_color = '#111';
+            break;
+        case 'hyper':
+            $t.dice.dice_color = '#64FDFB';
+            $t.dice.label_color = '#FCE1B4';
+            break;
         default:
             break;
     }
