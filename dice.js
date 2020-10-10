@@ -691,13 +691,14 @@
     }
 
     this.dice_box.prototype.roll = function(vectors, values, callback) {
-        this.prepare_dices_for_roll(vectors);
         if (values != undefined && values.length) {
             this.use_adapvite_timestep = false;
             var res = this.emulate_throw();
             this.prepare_dices_for_roll(vectors);
             for (var i in res)
                 shift_dice_faces(this.dices[i], values[i], res[i]);
+        } else {
+            this.prepare_dices_for_roll(vectors);
         }
         this.callback = callback;
         this.running = (new Date()).getTime();
