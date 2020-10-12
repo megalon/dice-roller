@@ -3,6 +3,8 @@
 function dice_initialize(container) {
     $t.remove($t.id('loading_text'));
 
+    let rollsfx = new Audio('./audio/roll.wav');
+
     var canvas = $t.id('canvas');
     canvas.style.width = window.innerWidth - 1 + 'px';
     canvas.style.height = window.innerHeight - 1 + 'px';
@@ -148,7 +150,18 @@ function dice_initialize(container) {
         set.value = params.notation;
     }
     if (params.roll) {
-        $t.raise_event($t.id('throw'), 'mouseup');
+
+        // Delay roll to let dice load
+        setTimeout(() => {
+                $t.raise_event($t.id('throw'), 'mouseup');
+            },
+
+            // Delay audio
+            setTimeout(() => {
+                rollsfx.play();
+                },
+                150),
+        200);
     }
     else {
         show_selector();
