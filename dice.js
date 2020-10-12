@@ -456,7 +456,7 @@
             this.h = this.ch;
         }
         this.aspect = Math.min(this.cw / this.w, this.ch / this.h);
-        that.scale = Math.sqrt(this.w * this.w + this.h * this.h) / 13;
+        that.scale = Math.sqrt(this.w * this.w + this.h * this.h) / 10;
 
         this.renderer.setSize(this.cw * 2, this.ch * 2);
 
@@ -691,13 +691,14 @@
     }
 
     this.dice_box.prototype.roll = function(vectors, values, callback) {
-        this.prepare_dices_for_roll(vectors);
         if (values != undefined && values.length) {
             this.use_adapvite_timestep = false;
             var res = this.emulate_throw();
             this.prepare_dices_for_roll(vectors);
             for (var i in res)
                 shift_dice_faces(this.dices[i], values[i], res[i]);
+        } else {
+            this.prepare_dices_for_roll(vectors);
         }
         this.callback = callback;
         this.running = (new Date()).getTime();
