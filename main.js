@@ -3,7 +3,10 @@
 function dice_initialize(container) {
     $t.remove($t.id('loading_text'));
 
-    let rollsfx = new Audio('./audio/roll.wav');
+    let rollsfx = [];
+    for (let i = 1; i <= 8; ++i) {
+        rollsfx.push(new Audio(`./audio/dice-roll-${i < 10 ? '0' + i : i}.wav`));
+    } 
 
     var canvas = $t.id('canvas');
     canvas.style.width = window.innerWidth - 1 + 'px';
@@ -158,9 +161,11 @@ function dice_initialize(container) {
 
             // Delay audio
             setTimeout(() => {
-                rollsfx.play();
-                },
-                150),
+                let randIndex = Math.floor(Math.random() * rollsfx.length);
+                console.log(`randIndex: ${randIndex}`)
+                rollsfx[randIndex].play();
+            },
+            150),
         200);
     }
     else {
